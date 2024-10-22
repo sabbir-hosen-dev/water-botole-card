@@ -1,4 +1,5 @@
 
+import PropTypes from "prop-types"
 import "./Card.css"
 export default function Card({item,cardAdd}) {
   const {img, name,price } = item
@@ -12,4 +13,11 @@ export default function Card({item,cardAdd}) {
       </div>
     </div>
   )
+  
+}
+
+
+Card.propTypes = {
+  item : PropTypes.object.isRequired,
+  cardAdd: PropTypes.func.isRequired
 }

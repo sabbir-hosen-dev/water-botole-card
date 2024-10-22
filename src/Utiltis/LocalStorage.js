@@ -8,6 +8,8 @@ const getCardLs = () => {
 }
 
 
+
+
 const saveToLs = (card) => {
   const cardStrung = JSON.stringify(card);
   localStorage.setItem("card", cardStrung);
@@ -16,10 +18,16 @@ const saveToLs = (card) => {
 const addToLs = (id) => {
   const card = getCardLs();
   card.push(id);
-
   saveToLs(card);
 
 }
 
 
-export {getCardLs,addToLs};
+const removeToLs = (id) => {
+  const localStoreItem = getCardLs();
+  const deletItem = localStoreItem.filter(item => item !== id);
+  saveToLs(deletItem)
+}
+
+
+export {getCardLs,addToLs,removeToLs};

@@ -1,9 +1,23 @@
-import React from 'react'
 
-function SelectCard({card}) {
+
+import PropTypes from 'prop-types';
+
+function SelectCard({ card,handleRemove }) {
   return (
-    <img style={{width : "50px", borderRadius: "3px"}} src={card.img} alt="" />
-  )
+    <div className="relative">
+      <img
+        style={{ width: "80px", borderRadius: "3px" }}
+        src={card.img}
+        alt=""
+      />
+      <span onClick={() => handleRemove(card.id)} className="close">x</span>
+    </div>
+  );
 }
 
-export default SelectCard
+SelectCard.propTypes = {
+  card : PropTypes.object.isRequired,
+  handleRemove: PropTypes.func.isRequired
+}
+
+export default SelectCard;

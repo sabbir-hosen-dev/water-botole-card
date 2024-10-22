@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Card from "../Card/Card";
 import "./Card.css";
-import { addToLs, getCardLs } from "../../Utiltis/LocalStorage";
+import { addToLs, getCardLs, removeToLs } from "../../Utiltis/LocalStorage";
 import SelectCard from "../SelectCard/SelectCard";
 
 
@@ -44,13 +44,18 @@ function Cards() {
     }
    },[data])
 
+   const handleRemove = (id) => {
 
+    const remingCard = card.filter(card => card.id !== id);
+    setCard(remingCard);
+    removeToLs(id);
+   }
   return (
     <div className="">
       <h2>Total Bottols : {data.length}</h2>
       <p>card: {card.length}</p>
       <div className="" style={{display: "flex", gap: "5px", justifyContent: "center", margin: "20px 0px", flexWrap: " wrap"}}>
-      {          card && card.map((card ,index)=> <SelectCard key={index} card={card}/>  )
+      {          card && card.map((card ,index)=> <SelectCard handleRemove={handleRemove} key={index} card={card}/>  )
          }
       </div>
       <div className="card-container">
