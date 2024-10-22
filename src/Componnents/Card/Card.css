@@ -1,0 +1,9 @@
+.card {
+  border: 2px solid slateblue;
+  padding: 15px;
+  border-radius: 15px;
+}
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
